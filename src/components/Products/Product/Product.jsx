@@ -8,10 +8,11 @@ import useStyles from './styles';
 const Product = ({ product }) => {
        
     const classes = useStyles();
+   
 
     return (
         <Card className={classes.root}>
-            <CardMedia className={classes.media} image={product.image} title={product.name}/>
+            <CardMedia className={classes.media} image={product.media.source} title={product.name}/>
             <CardContent>
                 <div className={classes.cardContent}>
                 
@@ -20,12 +21,11 @@ const Product = ({ product }) => {
                     </Typography>
                 
                     <Typography variant="h5" >
-                       {product.price}
+                       {product.price.formatted_with_symbol}
                     </Typography>
                 </div>
 
-                <Typography variant="body2" color="textSecondary">  {product.description}
-                </Typography>
+                <Typography dangerouslySetInnerHTML={{ __html:product.description }} variant="body2" color="textSecondary" />  
 
             </CardContent>
             
